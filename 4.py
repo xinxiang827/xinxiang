@@ -20,10 +20,8 @@ ENTROPY_BETA = 0.001
 LR_A = 0.001
 LR_C = 0.001
 N_S = 7
-N_A = 33
 UE_num = 6
 MEMORY_SIZE = 3000
-ACTION_SPACE = 33
 Band = 0.72
 packetsize = 0.000256
 P_total = 10 ** 4.6 / 1000
@@ -31,9 +29,9 @@ band_total = 24
 P_each_band = P_total / band_total
 uplison=0.5
 action_ori = [0,0,0,0,0,0]
-delay_violation = [10 ** -random.randint(3, 7), 10 ** -random.randint(3, 7), 10 ** -random.randint(3, 7), 10 ** -random.randint(3, 7), 10 ** -random.randint(3, 7), 10 ** -random.randint(3, 7)]
-D_max = [round(random.uniform(0.5, 10),1), round(random.uniform(0.5, 10),1), round(random.uniform(0.5, 10),1), round(random.uniform(0.5, 10),1), round(random.uniform(0.5, 10),1), round(random.uniform(0.5, 10),1)]
-SINR_ave =[random.randint(8, 20),random.randint(8, 20),random.randint(8, 20),random.randint(8, 20),random.randint(8, 20),random.randint(8, 20)]##[10,10,10,10,10,10]# [20,20,20,20,20,20]#  # DB
+delay_violation = [10 ** -5, 10 ** -4, 10 ** -5, 10 ** -3, 10 ** -3, 10 ** -4]
+D_max = [1, 2, 3, 5, 2, 4]
+SINR_ave =[20,20,20,20,20,20]
 anna=2
 SINR_e_ave = 3
 SINR_ave_lin = np.zeros(UE_num)
@@ -45,22 +43,114 @@ for i in range(UE_num):
     else:
         class_ori[i] = 1
 SINR_e_ave_lin = round(10 ** (SINR_e_ave / 10),2)
-Q_c = 4.7534  # 5.4909
-Q_e= 2.3263#3.719# 2.3263
+Q_c = 4.7534
+Q_e= 2.3263
 eplison_c = 2 * 10 ** -6
-action_list = np.arange(0,32,1)
-n_PD_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3,3,0]
-#传输占用的RB的数量
-RB_num_list = [1, 2, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 1, 2, 1, 2, 3, 1, 2, 1, 2, 1,2,0]
-#传输占用的带宽
-W_real_list = [4, 8, 2, 4, 6, 1, 2, 3, 4, 5, 4, 8, 2, 4, 6, 1, 2, 3, 4,4, 8, 2, 4, 1, 2, 3, 4, 8, 2, 4,1, 2,0]
-#总共占用的带宽
-W_total_list = [4, 8, 2, 4, 6, 1, 2, 3, 4, 5, 4, 8, 2, 4, 6, 2, 4, 6, 8,4, 8, 3, 6, 3, 6, 9, 4, 8, 4, 8, 4,8,0]
-time_list = [1, 1, 2, 2, 2, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,4,0]
-TTI_list = [0.0000625, 0.0000625, 0.000125, 0.000125, 0.000125, 0.00025, 0.00025, 0.00025, 0.00025,
-                         0.00025, 0.0000625, 0.0000625, 0.000125, 0.000125, 0.000125, 0.00025, 0.00025, 0.00025,
-                         0.00025,0.0000625, 0.0000625, 0.000125, 0.000125, 0.00025, 0.00025, 0.00025,
-                         0.0000625, 0.0000625, 0.000125, 0.000125, 0.00025, 0.00025,0]
+#0.0625,1
+# action_list = np.arange(0,1,1)
+# n_PD_list = [1,1]
+# RB_num_list = [1,2]
+# W_real_list =[4,8]
+# W_total_list = [4,8]
+# time_list = [ 2,2]
+# TTI_list = [0.0000625,0.0000625]
+# action_list = np.arange(0,1,1)
+# n_PD_list = [0,0]
+# RB_num_list = [1,2]
+# W_real_list =[4,8]
+# W_total_list = [4,8]
+# time_list = [ 1,1]
+# TTI_list = [0.0000625,0.0000625]
+# 0.0625,2
+# action_list = np.arange(0,1,1)
+# n_PD_list = [2,2]
+# RB_num_list = [1,2]
+# W_real_list =[4,8]
+# W_total_list = [4,8]
+# time_list = [ 3,3]
+# TTI_list = [0.0000625,0.0000625]
+# 0.0625,3
+# N_A = 2
+# action_list = np.arange(0,1,1)
+# n_PD_list = [3,3]
+# RB_num_list = [1,2]
+# W_real_list =[4,8]
+# W_total_list = [4,8]
+# time_list = [ 4,4]
+# TTI_list = [0.0000625,0.0000625]
+# 0.125,0
+# N_A = 3
+# action_list = np.arange(0,2,1)
+# n_PD_list = [0,0,0]
+# RB_num_list = [1,2,3]
+# W_real_list =[2,4,6]
+# W_total_list = [2,4,6]
+# time_list = [ 2,2,2]
+# TTI_list = [0.000125,0.000125,0.000125]
+# 0.125,1
+N_A = 3
+action_list = np.arange(0,2,1)
+n_PD_list = [1,1,1]
+RB_num_list = [1,2,3]
+W_real_list =[2,4,6]
+W_total_list = [2,4,6]
+time_list = [ 4,4,4]
+TTI_list = [0.000125,0.000125,0.000125]
+# 0.125,2
+# N_A = 2
+# action_list = np.arange(0,1,1)
+# n_PD_list = [2,2]
+# RB_num_list = [1,2]
+# W_real_list =[2,4]
+# W_total_list = [3,6]
+# time_list = [ 4,4]
+# TTI_list = [0.000125,0.000125]
+# 0.125,3
+# N_A = 2
+# action_list = np.arange(0,1,1)
+# n_PD_list = [3,3]
+# RB_num_list = [1,2]
+# W_real_list =[2,4]
+# W_total_list = [4,8]
+# time_list = [ 4,4]
+# TTI_list = [0.000125,0.000125]
+# 0.25,0
+# N_A = 5
+# action_list = np.arange(0,4,1)
+# n_PD_list = [0,0,0,0,0]
+# RB_num_list = [1,2,3,4,5]
+# W_real_list =[1,2,3,4,5]
+# W_total_list = [1,2,3,4,5]
+# time_list = [ 4,4,4,4,4]
+# TTI_list = [0.00025,0.00025,0.00025,0.00025,0.00025]
+# 0.25,1
+# N_A = 4
+# action_list = np.arange(0,3,1)
+# n_PD_list = [1,1,1,1]
+# RB_num_list = [1,2,3,4]
+# W_real_list =[1,2,3,4]
+# W_total_list = [2,4,6,8]
+# time_list = [ 4,4,4,4]
+# TTI_list = [0.00025,0.00025,0.00025,0.00025]
+# 0.25,2
+# N_A = 3
+# action_list = np.arange(0,2,1)
+# n_PD_list = [2,2,2]
+# RB_num_list = [1,2,3]
+# W_real_list =[1,2,3]
+# W_total_list = [3,6,9]
+# time_list = [ 4,4,4]
+# TTI_list = [0.00025,0.00025,0.00025]
+# 0.25,3
+# N_A = 2
+# action_list = np.arange(0,1,1)
+# n_PD_list = [3,3]
+# RB_num_list = [1,2]
+# W_real_list =[1,2]
+# W_total_list = [4,8]
+# time_list = [ 4,4]
+# TTI_list = [0.00025,0.00025]
+ACTION_SPACE = N_A
 class env_snc():
     def __init__(self):
         self.agent = UE_num
@@ -94,7 +184,6 @@ class env_snc():
         self.T_c = np.zeros(UE_num)
         self.T_t = np.zeros(UE_num)
         self.calc = [[0, 0, 0, 0, 0, 0, 0, 0, 0]]
-        # self.eplison_c = 2 * 10 ** -6
         self.reward = 0
 
     def reset(self):
@@ -216,7 +305,8 @@ class env_snc():
                             eplison_q_1[j] = fenzi[j] ** D_max_q / fenmu[j]
                     eplison_q_1[eplison_q_1 <= 0] = 10
                     eplison_q = min(eplison_q_1)
-                    calc = [T_t * 1000, W_num_real, D_max_q, packetsize, SINR_ave[UE_index], SINR_e_ave, anna, Q_e, eplison_q]
+                    calc = [T_t * 1000, W_num_real, D_max_q, packetsize, SINR_ave[UE_index], SINR_e_ave, anna, Q_e,
+                            eplison_q]
                     data2 = np.row_stack((data2, calc))
                     sio.savemat('C:/Users/ZJX/Desktop/simulation/calc.mat', {'calc': data2})
                 if eplison_q > 1 or eplison_q < 0:
@@ -229,7 +319,7 @@ class env_snc():
                 self.state_[1 + i] = observation[1 + i]
                 self.state_[self.agent + 1 + i] = observation[self.agent + 1 + i]
                 self.state_[self.agent * 2 + 1 + i] = observation[self.agent * 2 + 1 + i]
-                self.state_[self.agent * 4 + 1 + i] = observation[self.agent * 4 + 1 + i]
+                self.state_[self.agent * 4 + 1 + i] = observation[self.agent * 4 + 1 + i]  # 动作暂时不更新
                 self.state_[self.agent * 5 + 1 + i] = observation[self.agent * 5 + 1 + i]
                 if i == UE_index:
                     self.state_[self.agent * 3 + 1 + i] =  W_num_total
@@ -237,13 +327,12 @@ class env_snc():
                     self.state_[self.agent * 3 + 1 + i] = observation[self.agent * 3 + 1 + i]
             action = action_index
         self.reward = reward
-        return self.state_, self.reward, eplison_0, r, n_PD, W_num_total, action, self.calc, TTI_size
+        return self.state_, self.reward, eplison_0, r, n_PD, W_num_total, action, self.calc, TTI_size  # 返回值是下一个状态，奖励函数，平均奖励
 
 class ACNet(object):
     sess = None
-
     def __init__(self, scope, opt_a=None, opt_c=None, global_net=None):
-        if scope == 'global_net':
+        if scope == 'global_net':  # get global network
             with tf.compat.v1.variable_scope(scope):
                 self.s = tf.compat.v1.placeholder(tf.float32, [None, N_S], 'S')
                 self.a_params, self.c_params = self._build_net(scope)[-2:]
@@ -301,11 +390,13 @@ class ACNet(object):
     def pull_global(self):  # run by a local
         self.sess.run([self.pull_a_params_op, self.pull_c_params_op])
 
+
 def work(job_name, task_index, global_ep, lock, r_queue, global_running_r):
     EE_norm_record=[]
     SE_norm_record=[]
     EE_norm_max = 0
     SE_norm_max = 0
+    # set work's ip:port
     cluster = tf.train.ClusterSpec({
         "ps": ['localhost:2220', 'localhost:2221',],
         "worker": ['localhost:2222', 'localhost:2223', 'localhost:2224', 'localhost:2225',]
@@ -323,6 +414,7 @@ def work(job_name, task_index, global_ep, lock, r_queue, global_running_r):
             opt_c = tf.compat.v1.train.RMSPropOptimizer(LR_C, name='opt_c')
             global_net = ACNet('global_net')
         local_net = ACNet('local_ac%d' % task_index, opt_a, opt_c, global_net)
+        # set training steps
         hooks = [tf.estimator.StopAtStepHook(last_step=100000)]
         with tf.compat.v1.train.MonitoredTrainingSession(master=server.target, is_chief=True, hooks=hooks,) as sess:
             print('Start Worker Session: ', task_index)
@@ -354,6 +446,7 @@ def work(job_name, task_index, global_ep, lock, r_queue, global_running_r):
                 for step1 in range(max_step):
                     step = step + 1
                     if step1 == 0:
+                        # action_set = action_ori
                         action_index_set = action_ori
                         action_index_set_0 = action_ori
                     reward_step = []
@@ -422,13 +515,13 @@ def work(job_name, task_index, global_ep, lock, r_queue, global_running_r):
                         EE_norm_max = max(EE_norm_record)
                         SE_norm_max = max(SE_norm_record)
                         if EE_fenzi / EE_fenmu > 530000 or SE_fenzi / SE_fenmu > 0.6:
-                            bb= 1
+                            bbbbbbbbbbbbbbbbbbbb = 1
                         EE_norm = round(EE_fenzi / EE_fenmu / 530000, 2)
                         SE_norm = round(SE_fenzi / SE_fenmu / 0.6, 2)
                         if EE_norm > 1 or EE_norm > 1:
                             EE_norm = 1
                             SE_norm = 1
-                    reward_sum = round((EE_norm ** uplison) * (SE_norm ** (1 - uplison)) - penalty_num,3)
+                    reward_sum = round((EE_norm ** uplison) * (SE_norm ** (1 - uplison)) - penalty_num,3)  # -penalty_num
                     for i in range(UE_num):
                         buffer_s.append([observation_0_set[i+1,0],observation_0_set[i+1,i+1],observation_0_set[i+1,UE_num+i+1],observation_0_set[i+1,UE_num*2+i+1],observation_0_set[i+1,UE_num*3+i+1],observation_0_set[i+1,UE_num*4+i+1],observation_0_set[i+1,UE_num*5+i+1]])  # 将当前状态，行动和回报加入缓存
                         buffer_a.append(action_index_set_0[i])
@@ -438,14 +531,14 @@ def work(job_name, task_index, global_ep, lock, r_queue, global_running_r):
                         done = True
                     ep_r += reward_sum
                     reward_ave_1=round(ep_r / max_step,3)
-                    if total_step % UPDATE_GLOBAL_ITER == 0 or done:
+                    if total_step % UPDATE_GLOBAL_ITER == 0 or done:  # update global and assign to local net
                         if done:
-                            v_s_ = 0
+                            v_s_ = 0  # terminal
                         else:
                             observation_ = np.array([observation_[0],observation_[i+1],observation_[UE_num+i+1],observation_[UE_num*2+i+1],observation_[UE_num*3+i+1],observation_[UE_num*4+i+1],observation_[UE_num*5+i+1]])
                             v_s_ = sess.run(local_net.v, {local_net.s: observation_[np.newaxis, :]})[0, 0]
                         buffer_v_target = []
-                        for r in buffer_r[::-1]:
+                        for r in buffer_r[::-1]:  # reverse buffer r
                             v_s_ = r + GAMMA * v_s_
                             buffer_v_target.append(v_s_)
                         buffer_v_target.reverse()
@@ -490,8 +583,9 @@ def work(job_name, task_index, global_ep, lock, r_queue, global_running_r):
             plt.xlabel('Episode')
             plt.ylabel('reward_ave')
             plt.show()
-        sio.savemat('C:/Users/ZJX/Desktop/simulation/EM-A3C.mat', {'reward_set': re, 'reward_ave': reward_ave, 'W_num': W_num_1, 'TTI_size': TTI_size_1, 'n_PD': n_PD_1, 'eplison': eplison_1,'time': t2,'reward_ave_set':reward_ave,
+        sio.savemat('C:/Users/ZJX/Desktop/simulation/4_fixedfixed_125_0_2.mat', {'reward_set': re, 'reward_ave': reward_ave, 'W_num': W_num_1, 'TTI_size': TTI_size_1, 'n_PD': n_PD_1, 'eplison': eplison_1,'time': t2,'reward_ave_set':reward_ave,
                                                                               'r_parameter_set':r_parameter_set_0,'eplison_c_set':eplison_c_set})
+
 if __name__ == "__main__":
     global_ep = mp.Value('i', 0)
     lock = mp.Lock()
